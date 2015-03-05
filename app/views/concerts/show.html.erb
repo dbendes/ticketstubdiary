@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @concert.date %>
+</p>
+
+<p>
+  <strong>Venue:</strong>
+  <%= @concert.venue.name %>
+</p>
+
+<p>
+  <strong>Bands:</strong>
+  <% @concert.bands.each do |band| %>
+  <p>
+    <%= band.name %>
+  </p>
+<% end %>
+</p>
+
+<p>
+  <strong>Users:</strong>
+  <% @concert.users.each do |user| %>
+  <p>
+    <%= user.name %>
+  </p>
+<% end %>
+</p>
+
+<%= link_to 'Edit', edit_concert_path(@concert) %> |
+<%= link_to 'Back', concerts_path %>

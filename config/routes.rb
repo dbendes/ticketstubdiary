@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :bands
+
+  resources :concerts
+
+  resources :venues
+
   get 'about' => 'pages#about'
 
   get 'home' => 'pages#home'

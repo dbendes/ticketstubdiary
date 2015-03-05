@@ -1,0 +1,30 @@
+<%= form_for(@concert) do |f| %>
+  <% if @concert.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@concert.errors.count, "error") %> prohibited this concert from being saved:</h2>
+
+      <ul>
+      <% @concert.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= f.hidden_field :user_ids %> 
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :venue_id %><br>
+    <%= f.select :venue_id, Venue.all.collect {|x| [x.name,x.id]}, {:prompt => true}, {:multiple => false} %>
+  </div>
+  <div class="field">
+    <%= f.label :bands %><br>
+    <%= f.collection_select(:band_ids, Band.all, :id, :name, {:prompt => true},  {:multiple => true}, ) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

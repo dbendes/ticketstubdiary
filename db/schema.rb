@@ -11,10 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150303203852) do
+ActiveRecord::Schema.define(version: 20150305031247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bands", force: true do |t|
+    t.string   "name"
+    t.string   "website"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "concerts", force: true do |t|
+    t.date     "date"
+    t.integer  "venue_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "concerts", ["venue_id"], name: "index_concerts_on_venue_id", using: :btree
+
+  create_table "concerts_bands", id: false, force: true do |t|
+    t.integer "concert_id"
+    t.integer "band_id"
+  end
+
+  add_index "concerts_bands", ["concert_id", "band_id"], name: "index_concerts_bands_on_concert_id_and_band_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -34,5 +57,24 @@ ActiveRecord::Schema.define(version: 20150303203852) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "users_concerts", id: false, force: true do |t|
+    t.integer "user_id"
+    t.integer "concert_id"
+  end
+
+  add_index "users_concerts", ["user_id", "concert_id"], name: "index_users_concerts_on_user_id_and_concert_id", using: :btree
+
+  create_table "venues", force: true do |t|
+    t.string   "name"
+    t.string   "website"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip"
+    t.integer  "sgID"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
