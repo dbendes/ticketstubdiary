@@ -13,8 +13,15 @@ Rails.application.routes.draw do
   get 'contact' => 'pages#contact'
 
   devise_for :users
+  resources :users, only: [:show]
 
-  root 'pages#home'
+  authenticated :user do
+    root to: "users#show", as: :authenticated_root, via: :get
+  end
+
+  unauthenticated do
+    root 'pages#home'
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

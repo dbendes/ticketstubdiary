@@ -1,0 +1,7 @@
+<h1>Welcome, <%= @user.name %>!</h1>
+<% if @user.concerts.exists? %>
+    <h3>You've attended <%= pluralize(@user.concerts.count, 'concert') %>, seen <%= pluralize(@user.bands.pluck('DISTINCT name').count, 'band') %>, and been to <%= pluralize(@user.venues.pluck('DISTINCT name').count, 'venue') %>.</h3>
+
+<% else %>
+    <h3><a href="/concerts/new">You haven't logged any concerts yet. Want to change that? Click Here.</a></h3>
+<% end %>
