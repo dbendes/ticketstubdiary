@@ -11,6 +11,16 @@ class BandsController < ApplicationController
     end
   end
 
+  def get_bands
+    parsed = JSON.load(open("http://api.seatgeek.com/2/performers?type=band&per_page=3000").read)
+    bands = parsed['performers']
+    bands.each do |band|
+      @band = Band.create(:name => band["name"])
+    end
+  end
+
+  helper_method :get_bands
+
   def show
     respond_with(@band)
   end
