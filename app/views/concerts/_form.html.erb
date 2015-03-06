@@ -21,9 +21,24 @@
     <%= f.select :venue_id, Venue.all.collect {|x| [x.name,x.id]}, {:prompt => true}, {:multiple => false} %>
   </div>
   <div class="field">
-    <%= f.label :bands %><br>
-    <%= f.collection_select(:band_ids, Band.all, :id, :name, {:prompt => true},  {:multiple => true}, ) %>
+   <%= f.label :band_id %><br>
+   <%= f.fields_for :band_ids do |band| %>
+      <%= band.collection_select(nil, Band.all, :id, :name,
+        {include_blank: "Please select", selected: 1},
+        {id: :concert_band_id_1}) %>
+       </br>
+      <%= band.collection_select(nil, Band.all, :id, :name,
+        {include_blank: "Please select", selected: 1},
+        {id: :concert_band_id_2}) %>
+        </br>
+      <%= band.collection_select(nil, Band.all, :id, :name,
+        {include_blank: "Please select", selected: 1},
+        {id: :concert_band_id_3}) %>
+        </br>
+      <% end %>
   </div>
+
+  
   <div class="actions">
     <%= f.submit %>
   </div>

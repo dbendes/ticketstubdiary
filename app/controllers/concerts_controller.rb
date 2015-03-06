@@ -1,7 +1,10 @@
 class ConcertsController < ApplicationController
+  
   before_action :set_concert, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
+  
+  
 
   def index
     @concerts = current_user.concerts
