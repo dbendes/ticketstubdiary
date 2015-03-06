@@ -3,8 +3,6 @@ class ConcertsController < ApplicationController
   before_action :set_concert, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
-  
-  
 
   def index
     @concerts = current_user.concerts
@@ -46,6 +44,6 @@ class ConcertsController < ApplicationController
     end
 
     def concert_params
-      params.require(:concert).permit(:date, :venue_id, :band_ids => [], :user_ids => [])
+      params.require(:concert).permit(:date, :venue_id, :venue_tokens, :band_tokens, :band_ids => [], :user_ids => [])
     end
 end

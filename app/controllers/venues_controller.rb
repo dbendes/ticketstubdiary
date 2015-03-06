@@ -4,8 +4,11 @@ class VenuesController < ApplicationController
   respond_to :html
 
   def index
-    @venues = Venue.all
-    respond_with(@venues)
+    @venues = Venue.all.order(:name)
+    respond_to do |format|
+      format.html
+      format.json {render json: @venues.where("name like ?", "%#{params[:q]}%") }
+    end
   end
 
   def show

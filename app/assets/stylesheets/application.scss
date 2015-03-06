@@ -11,8 +11,13 @@
  * file per style scope.
  *
  */
+ 
+@import "token-input-facebook";
+@import "token-input";
 @import "bootstrap-sprockets";
 
 @import "bootstrap";
+
+
 
 body { padding-top: 50px; }

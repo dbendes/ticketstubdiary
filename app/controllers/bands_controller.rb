@@ -4,8 +4,11 @@ class BandsController < ApplicationController
   respond_to :html
 
   def index
-    @bands = Band.all
-    respond_with(@bands)
+    @bands = Band.all.order(:name)
+    respond_to do |format|
+      format.html
+      format.json {render json: @bands.where("name like ?", "%#{params[:q]}%") }
+    end
   end
 
   def show
