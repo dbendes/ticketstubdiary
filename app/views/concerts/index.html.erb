@@ -1,5 +1,6 @@
 <h1>My Concerts</h1>
-<h3>You've attended <%= pluralize(@concerts.count, 'concert') %>, seen <%= pluralize(current_user.bands.pluck('DISTINCT name').count, 'band') %>, and been to <%= pluralize(current_user.venues.pluck('DISTINCT name').count, 'venue') %>.</h3>
+<h3>You've attended <%= pluralize(@concerts.count, 'concert') %>, seen <%= pluralize(current_user.bands.pluck('DISTINCT name').count, 'band') %>, and been to
+<%= pluralize(current_user.venues.pluck('DISTINCT name').count, 'venue') %>.</h3>
 <table class="table">
   <thead>
     <tr>
