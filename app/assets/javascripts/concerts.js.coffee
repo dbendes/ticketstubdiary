@@ -7,10 +7,7 @@ jQuery ->
         resultsLimit: 5
         });
     
-    
-jQuery ->
     $('#concert_band_tokens').tokenInput('/bands.json',{
-        theme: 'facebook',
         tokenLimit: 4,
         resultsLimit: 5,
         preventDuplicates: true
