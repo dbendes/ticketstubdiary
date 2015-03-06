@@ -16,3 +16,19 @@
 //= require jquery.tokeninput
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+
+    $('#concert_venue_tokens').tokenInput('/venues.json',{
+        tokenLimit: 1,
+        resultsLimit: 5,
+        resultsFormatter: function(item){return "<li>" + item.name + ", " + item.city + ", " + item.state + "</li>"}
+        });
+    
+    $('#concert_band_tokens').tokenInput('/bands.json',{
+        tokenLimit: 4,
+        resultsLimit: 5,
+        preventDuplicates: true
+    });
+    
+});

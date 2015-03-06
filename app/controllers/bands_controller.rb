@@ -7,7 +7,7 @@ class BandsController < ApplicationController
     @bands = Band.all.order(:name)
     respond_to do |format|
       format.html
-      format.json {render json: @bands.where("name like ?", "%#{params[:q]}%") }
+      format.json {render json: @bands.where("name ILIKE ?", "%#{params[:q]}%") }
     end
   end
 
