@@ -12,7 +12,7 @@ class BandsController < ApplicationController
   end
 
   def get_bands
-    parsed = JSON.load(open("http://api.seatgeek.com/2/performers?type=band&per_page=3000").read)
+    parsed = JSON.load(open("http://api.seatgeek.com/2/performers?type=band&sort=id.asc&per_page=1500&page=1").read)
     bands = parsed['performers']
     bands.each do |band|
       @band = Band.create(:name => band["name"])
