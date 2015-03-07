@@ -10,7 +10,7 @@
       <th>State</th>
       <th>Zip</th>
       <th>Sgid</th>
-      <th colspan="3"></th>
+      <%# <th colspan="3"></th> %>
     </tr>
   </thead>
 
@@ -24,9 +24,11 @@
         <td><%= venue.state %></td>
         <td><%= venue.zip %></td>
         <td><%= venue.sgID %></td>
-        <td><%= link_to 'Show', venue %></td>
-        <td><%= link_to 'Edit', edit_venue_path(venue) %></td>
-        <td><%= link_to 'Destroy', venue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if false %>
+          <td><%= link_to 'Show', venue %></td>
+          <td><%= link_to 'Edit', edit_venue_path(venue) %></td>
+          <td><%= link_to 'Destroy', venue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -35,4 +37,4 @@
 <br>
 
 
-<%= link_to 'New Venue', new_venue_path %>
+<%#= link_to 'New Venue', new_venue_path %>

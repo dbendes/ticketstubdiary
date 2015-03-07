@@ -6,7 +6,7 @@
       <th>Name</th>
       <th>Website</th>
       <th>SGID</th>
-      <th colspan="3"></th>
+      <%#<th colspan="3"></th>%>
     </tr>
   </thead>
 
@@ -16,9 +16,11 @@
         <td><%= band.name %></td>
         <td><%= band.website %></td>
         <td><%= band.sgid %></td>
+      <% if false %>  
         <td><%= link_to 'Show', band %></td>
         <td><%= link_to 'Edit', edit_band_path(band) %></td>
         <td><%= link_to 'Destroy', band, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -29,4 +31,4 @@
 
 
 
-<%= link_to 'New Band', new_band_path %>
+<%#= link_to 'New Band', new_band_path %>
