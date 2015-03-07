@@ -1,6 +1,6 @@
 class BandsController < ApplicationController
   before_action :set_band, only: [:show, :edit, :update, :destroy]
-
+  require 'open-uri'
   respond_to :html
 
   def index
@@ -12,10 +12,10 @@ class BandsController < ApplicationController
   end
 
   def get_bands
-    parsed = JSON.load(open("http://api.seatgeek.com/2/performers?type=band&sort=id.asc&per_page=1500&page=1").read)
+    parsed = JSON.load(open("http://api.seatgeek.com/2/performers?type=band&per_page=15&page=1&sort=id.asc").read)
     bands = parsed['performers']
     bands.each do |band|
-      @band = Band.create(:name => band["name"])
+      @band = Band.create(:name => band["name"], :sgid => band["id"])
     end
   end
 
@@ -55,6 +55,6 @@ class BandsController < ApplicationController
     end
 
     def band_params
-      params.require(:band).permit(:name, :website)
+      params.require(:band).permit(:name, :website, :sgid)
     end
 end
