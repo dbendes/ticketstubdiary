@@ -9,6 +9,7 @@ gem 'mechanize'
 gem 'sidekiq'
 gem 'will_paginate', '~> 3.0'
 gem 'jquery-validation-rails'
+gem 'newrelic_rpm'
 gem 'rails_12factor', group: :production
 gem 'unicorn'
 ruby "2.1.5"
