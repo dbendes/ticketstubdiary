@@ -22,11 +22,23 @@ class ConcertsController < ApplicationController
   end
 
   def create
-    @concert = Concert.new(concert_params)
-    @concert.user_ids = current_user.id
+    concertDateTime = DateTime.new concert_params["date(1i)"].to_i, concert_params["date(2i)"].to_i, concert_params["date(3i)"].to_i, concert_params["date(4i)"].to_i, concert_params["date(5i)"].to_i
+    if Concert.where(venue_id: concert_params["venue_tokens"], date: concertDateTime).exists?
+      @concert = Concert.where(venue_id: concert_params["venue_tokens"], date: concertDateTime).first
+      if current_user.concerts.where(id: @concert.id).present?
+      else
+        @concert.users << current_user
+      end
+    else
+      @concert = Concert.new(concert_params)
+      @concert.users << current_user
+    end
+
     @concert.save
     respond_with(@concert)
   end
+  
+  
 
   def update
     @concert.update(concert_params)

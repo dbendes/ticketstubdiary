@@ -13,8 +13,8 @@
   
   <%= f.hidden_field :user_ids %> 
   <div class="field">
-    <%= f.label :date %><br>
-    <%= f.date_select :date %>
+    <%= f.label :datetime %><br>
+    <%= f.datetime_select :date, ampm: true, :minute_step => 15 %>
   </div>
   <div class="field">
     <%= f.label :venue_tokens, "Venue" %><br>

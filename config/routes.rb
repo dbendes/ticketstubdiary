@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :bands
-
-  resources :concerts
-
-  resources :venues
+  
 
   get 'about' => 'pages#about'
 
@@ -14,6 +10,13 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users, only: [:show]
+  
+  
+  authenticate :user do
+    resources :bands
+    resources :concerts
+    resources :venues
+  end
   
   authenticated :user do
     root to: "users#show", as: :authenticated_root, via: :get
