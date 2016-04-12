@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>CUID:</strong>
+  <%= @part.cuid %>
+</p>
+
+<p>
+  <strong>Custom:</strong>
+  <%= @part.custom %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @part.desc %>
+</p>
+
+<%= link_to 'Edit', edit_part_path(@part) %> |
+<%= link_to 'Back', parts_path %>

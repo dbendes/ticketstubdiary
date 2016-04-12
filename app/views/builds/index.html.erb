@@ -1,0 +1,33 @@
+<h1>Listing builds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Bom date</th>
+      <th>Prod start date</th>
+      <th>Corrugate due date</th>
+      <th>Production end date</th>
+      <th>Quantity</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @builds.each do |build| %>
+      <tr>
+        <td><%= build.bom_date %></td>
+        <td><%= build.prod_start_date %></td>
+        <td><%= build.corrugate_due_date %></td>
+        <td><%= build.production_end_date %></td>
+        <td><%= build.quantity %></td>
+        <td><%= link_to 'Show', build %></td>
+        <td><%= link_to 'Edit', edit_build_path(build) %></td>
+        <td><%= link_to 'Destroy', build, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Build', new_build_path %>

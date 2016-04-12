@@ -1,0 +1,29 @@
+<h1>Listing build_parts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Build</th>
+      <th>Part</th>
+      <th>Units Per</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @build_parts.each do |build_part| %>
+      <tr>
+        <td><%= build_part.build %></td>
+        <td><%= build_part.part %></td>
+        <td><%= build_part.units_per %></td>
+        <td><%= link_to 'Show', build_part %></td>
+        <td><%= link_to 'Edit', edit_build_part_path(build_part) %></td>
+        <td><%= link_to 'Destroy', build_part, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Build part', new_build_part_path %>

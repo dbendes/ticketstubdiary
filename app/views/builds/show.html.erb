@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Bom date:</strong>
+  <%= @build.bom_date %>
+</p>
+
+<p>
+  <strong>Prod start date:</strong>
+  <%= @build.prod_start_date %>
+</p>
+
+<p>
+  <strong>Corrugate due date:</strong>
+  <%= @build.corrugate_due_date %>
+</p>
+
+<p>
+  <strong>Production end date:</strong>
+  <%= @build.production_end_date %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @build.quantity %>
+</p>
+
+<%= link_to 'Edit', edit_build_path(@build) %> |
+<%= link_to 'Back', builds_path %>

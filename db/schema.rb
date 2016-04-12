@@ -11,69 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150309193308) do
+ActiveRecord::Schema.define(version: 20160412165107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "bands", force: true do |t|
-    t.string   "name"
-    t.string   "website"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "sgid"
-  end
-
-  create_table "concerts", force: true do |t|
-    t.datetime "date"
-    t.integer  "venue_id"
+  create_table "build_parts", force: true do |t|
+    t.integer  "build_id"
+    t.integer  "part_id"
+    t.integer  "units_per"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "concerts", ["venue_id"], name: "index_concerts_on_venue_id", using: :btree
+  add_index "build_parts", ["build_id"], name: "index_build_parts_on_build_id", using: :btree
+  add_index "build_parts", ["part_id"], name: "index_build_parts_on_part_id", using: :btree
 
-  create_table "concerts_bands", id: false, force: true do |t|
-    t.integer "concert_id"
-    t.integer "band_id"
-  end
-
-  add_index "concerts_bands", ["concert_id", "band_id"], name: "index_concerts_bands_on_concert_id_and_band_id", using: :btree
-
-  create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+  create_table "builds", force: true do |t|
+    t.date     "bom_date"
+    t.date     "prod_start_date"
+    t.date     "corrugate_due_date"
+    t.date     "production_end_date"
+    t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-
-  create_table "users_concerts", id: false, force: true do |t|
-    t.integer "user_id"
-    t.integer "concert_id"
-  end
-
-  add_index "users_concerts", ["user_id", "concert_id"], name: "index_users_concerts_on_user_id_and_concert_id", using: :btree
-
-  create_table "venues", force: true do |t|
-    t.string   "name"
-    t.string   "website"
-    t.string   "street"
-    t.string   "city"
-    t.string   "state"
-    t.integer  "zip"
-    t.integer  "sgID"
+  create_table "parts", force: true do |t|
+    t.boolean  "custom"
+    t.text     "desc"
+    t.string   "cuid"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

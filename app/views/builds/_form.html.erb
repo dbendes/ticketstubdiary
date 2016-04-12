@@ -1,0 +1,37 @@
+<%= form_for(@build) do |f| %>
+  <% if @build.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@build.errors.count, "error") %> prohibited this build from being saved:</h2>
+
+      <ul>
+      <% @build.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :bom_date %><br>
+    <%= f.date_select :bom_date %>
+  </div>
+  <div class="field">
+    <%= f.label :prod_start_date %><br>
+    <%= f.date_select :prod_start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :corrugate_due_date %><br>
+    <%= f.date_select :corrugate_due_date %>
+  </div>
+  <div class="field">
+    <%= f.label :production_end_date %><br>
+    <%= f.date_select :production_end_date %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity %><br>
+    <%= f.text_field :quantity %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

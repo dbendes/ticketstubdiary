@@ -3,10 +3,10 @@ source 'https://rubygems.org'
 
 
 gem 'pry'
-gem 'devise'
+#gem 'devise'
 gem 'bootstrap-sass'
-gem 'mechanize'
-gem 'sidekiq'
+#gem 'mechanize'
+#gem 'sidekiq'
 gem 'will_paginate', '~> 3.0'
 gem 'jquery-validation-rails'
 gem 'newrelic_rpm'

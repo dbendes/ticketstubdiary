@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bom_date: 2016-04-12
+  prod_start_date: 2016-04-12
+  corrugate_due_date: 2016-04-12
+  production_end_date: 2016-04-12
+  quantity: 
+
+two:
+  bom_date: 2016-04-12
+  prod_start_date: 2016-04-12
+  corrugate_due_date: 2016-04-12
+  production_end_date: 2016-04-12
+  quantity: 

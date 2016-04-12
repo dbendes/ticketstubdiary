@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Build:</strong>
+  <%= @build_part.build %>
+</p>
+
+<p>
+  <strong>Part:</strong>
+  <%= @build_part.part %>
+</p>
+
+<p>
+  <strong>Units Per:</strong>
+  <%= @build_part.units_per %>
+</p>
+
+<%= link_to 'Edit', edit_build_part_path(@build_part) %> |
+<%= link_to 'Back', build_parts_path %>

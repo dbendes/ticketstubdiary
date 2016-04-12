@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ticket Stub Diary</title>
+  <title>BBX Production / Corrugate</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -17,28 +17,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-        <a class="navbar-brand" href="/">Ticket Stub Diary</a>
+        <a class="navbar-brand" href="/">BBX Production / Corrugate</a>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <% if user_signed_in? %>
-          <li><a href="/concerts">My Concerts</a></li>
-          <li><a href="/concerts/new">New Concert</a></li>
-        <% else %>
           <li><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
           <li><a href="/contact">Contact</a></li>
-        <% end %>
+          <li><a href="/parts">Parts</a></li>
+          <li><a href="/builds">Builds</a></li>
+          <li><a href="/build_parts">Build Parts</a></li>
       </ul>
       <p class="navbar-text pull-right">
-<% if user_signed_in? %>
-  Logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<% end %>
     </div>
   </div>
 </nav>
@@ -56,7 +46,7 @@
 </div>
 <div class="footer navbar-fixed-bottom navbar-default">
   <div class="container">
-    <p class="text-center">Ticket Stub Diary</p>
+    <p class="text-center">BBX Production / Corrugate</p>
   </div>
 </div>
 

@@ -14,12 +14,12 @@ default: &default
 
 development:
   <<: *default
-  database: concert_tracker_development
+  database: inv_prod_dev
 
 test:
   <<: *default
-  database: concert_tracker_test
+  database: inv_prod_test
 
 production:
   <<: *default
-  database: concert_tracker_production
+  database: inv_prod_production

@@ -2,29 +2,21 @@ Rails.application.routes.draw do
 
   
 
+  resources :build_parts
+
+  resources :parts
+
+  resources :builds
+
   get 'about' => 'pages#about'
 
   get 'home' => 'pages#home'
 
   get 'contact' => 'pages#contact'
 
-  devise_for :users
-  resources :users, only: [:show]
-  
-  
-  authenticate :user do
-    resources :bands
-    resources :concerts
-    resources :venues
-  end
-  
-  authenticated :user do
-    root to: "users#show", as: :authenticated_root, via: :get
-  end
 
-  unauthenticated do
-    root 'pages#home'
-  end
+
+  root 'pages#home'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
