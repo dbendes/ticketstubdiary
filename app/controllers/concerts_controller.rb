@@ -22,14 +22,19 @@ class ConcertsController < ApplicationController
   end
 
   def create
+    print("creating)")
     concertDateTime = DateTime.new concert_params["date(1i)"].to_i, concert_params["date(2i)"].to_i, concert_params["date(3i)"].to_i, concert_params["date(4i)"].to_i, concert_params["date(5i)"].to_i
+    print("gotdatetime")
     if Concert.where(venue_id: concert_params["venue_tokens"], date: concertDateTime).exists?
+      print("that concert already exists")
       @concert = Concert.where(venue_id: concert_params["venue_tokens"], date: concertDateTime).first
       if current_user.concerts.where(id: @concert.id).present?
       else
         @concert.users << current_user
       end
     else
+      print("no concert exists")
+      print(concert_params)
       @concert = Concert.new(concert_params)
       @concert.users << current_user
     end
