@@ -35,6 +35,12 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   
-  
+  # turning off asset debug as part of rails upgrade https://stackoverflow.com/questions/35683185/rails-sprocketsrailshelperassetnotprecompiled-in-development/35693689
+  config.assets.debug = false
+  config.assets.compile = true
+  config.assets.unknown_asset_fallback = true
+  config.assets.check_precompiled_asset = false
+
+
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end
