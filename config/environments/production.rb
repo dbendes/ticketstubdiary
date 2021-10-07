@@ -79,4 +79,12 @@ Rails.application.configure do
 
   # make sure the assets exists - might have been busted during the push to production?
   config.assets.digest = true
+
+
+
+  # turning off asset debug as part of rails upgrade https://stackoverflow.com/questions/35683185/rails-sprocketsrailshelperassetnotprecompiled-in-development/35693689
+  config.assets.debug = false
+  config.assets.compile = true
+  config.assets.unknown_asset_fallback = true
+  config.assets.check_precompiled_asset = false
 end
